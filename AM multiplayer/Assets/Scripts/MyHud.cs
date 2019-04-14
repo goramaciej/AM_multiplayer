@@ -7,20 +7,14 @@ public class MyHud : MonoBehaviour
 {
     private NetworkManager mNetworkManager;
 
-    public void StartHost() {
-        mNetworkManager = GetComponent<NetworkManager>();
-        mNetworkManager.StartHost();
-    }
-
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        mNetworkManager = GetComponent<NetworkManager>();
+        Debug.Log("Try to get network manager: "+mNetworkManager);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void StartHost() {
+        Debug.Log("Starting Host at " + Time.timeSinceLevelLoad);
+        mNetworkManager.StartHost();
     }
 }
