@@ -7,6 +7,8 @@ public class CameraMotor : MonoBehaviour
     [SerializeField] private Transform LookAt;
     [SerializeField] private float boundX = 2.0f;
     [SerializeField] private float boundY = 1.5f;
+    [SerializeField] private float boundZ = 1f;
+    [SerializeField] private float distanceZ = -5f;
     [SerializeField] [Range(0, 1)] private float speed = 0.15f;
 
     private Vector3 desiredPosition;
@@ -33,6 +35,17 @@ public class CameraMotor : MonoBehaviour
                 delta.y = dy + boundY;
             }
         }
+
+        float dz = LookAt.position.z - transform.position.z;
+
+        if (dz > boundZ || dz < -boundZ) {
+            if (transform.position.z < LookAt.position.z) {
+                delta.z = dz - boundZ + distanceZ;
+            } else {
+                delta.z = dz + boundZ + distanceZ;
+            }
+        }
+
 
         desiredPosition = transform.position + delta;
 
