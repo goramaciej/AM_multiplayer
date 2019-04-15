@@ -8,8 +8,7 @@ public class Player : NetworkBehaviour
 {
     private Vector3 inputValue;
    
-    void Update()
-    {
+    void Update() {
         if (!isLocalPlayer) {
             return;
         }
